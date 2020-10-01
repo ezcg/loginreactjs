@@ -5,7 +5,7 @@ https://console.developers.google.com/apis/credentials
 
 - Update the new files with your config values and do not commit to your repo. db.config.example.js should work without modification but for the file name change.
 
-- Open your terminal, cd to the root directory of /login/ and run:
+- Open your terminal, cd to the root directory and run:
 docker-compose up
 
 - When it's done building, in a new terminal window, run:
