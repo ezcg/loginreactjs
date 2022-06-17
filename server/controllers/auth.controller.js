@@ -17,8 +17,7 @@ exports.signin = (req, res) => {
 
   try {
     let user = {};
-    User.findOne({raw:true, where: {googleId: req.body.googleId}
-    })
+    User.findOne({raw:true, where: {googleId: req.body.googleId}})
     .then(async user => {
       if (!user) {
         let username = req.body.name.replace(/[^\x00-\x7F]/g, "");

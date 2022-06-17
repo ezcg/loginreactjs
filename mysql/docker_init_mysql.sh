@@ -30,7 +30,8 @@ echo "set background=dark" >> ~/.vimrc
 #done
 #printf "\nChecking container health...\n"
 #while [ $(docker inspect --format "{{json .State.Health.Status }}" <container-name>) != "\"healthy\"" ]; do printf "."; sleep 1; done
-#printf "\nImporting...\n"
-#mysql -uroot -proot < /mysql/structure.sql
+printf "\nImporting...\n"
+mysql -uroot -proot < /mysql/structure.sql
 #mysql -uroot -proot < data.sql
+printf "\nDone.\n\n"
 

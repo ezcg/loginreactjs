@@ -11,8 +11,8 @@ services:
       dockerfile: Dockerfile.ubuntu
     working_dir: /var/app/current
     ports:
-      - "8082:8082"
-      - "9227:9229"
+      - "8080:8080"
+      - "9229:9229"
     stdin_open: true
     tty: true
     volumes:
@@ -35,18 +35,15 @@ services:
     command: sh -c "bash /client/docker_init.sh"
 
   db:
-    cap_add:
-      - SYS_NICE  # CAP_SYS_NICE
+    image: mysql:5.7
     container_name: db
     restart: "no"
     build:
       context: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: root
-      #MYSQL_DATABASE: users
+      dockerfile: Dockerfile
+    working_dir: /mysql
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - ./mysql/mysqldocker:/var/lib/mysql
       - ./mysql:/mysql

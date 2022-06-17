@@ -2,7 +2,7 @@ let devObj = {
   host: "db",
   user: "root",
   password: "root",
-  db: "login",
+  db: "db",
   dialect: "mysql",
   pool: {
     max: 5,
