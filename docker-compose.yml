@@ -42,6 +42,11 @@ services:
       context: mysql
       dockerfile: Dockerfile
     working_dir: /mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: login
+      MYSQL_USER: test
+      MYSQL_PASSWORD: 1234
     ports:
       - "3306:3306"
     volumes:

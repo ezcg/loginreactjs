@@ -49,5 +49,25 @@ show tables;
 
 select * from users\G
 
+**ERRORS**
+
+If you do docker-compose up and get an error like:
+
+```
+Creating network "loginreactjs_default" with the default driver
+Building db
+Traceback (most recent call last):
+File "/usr/bin/docker-compose", line 11, in <module>
+blah
+blah 
+blah
+```
+
+On the command line run where YOUR_WHO_AM_I is who you are running your shell as:
+
+`sudo chown -R YOUR_WHO_AM_I:YOUR_WHO_AM_I .`
+
+
+
 
 
