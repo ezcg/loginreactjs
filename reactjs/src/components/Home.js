@@ -66,14 +66,14 @@ const Home = (props) => {
 
         <p>To set user permission on a user, run the following queries from the host. Docker will pass the queries on to mysql:</p>
         <p>User<br />
-        docker exec -i db mysql -uroot -proot --database=login {'\u003C\u003C\u003C'} "UPDATE users SET role=1 WHERE id={currentUser.id}";
+        docker exec -i db mysql -uroot -proot --database=db {'\u003C\u003C\u003C'} "UPDATE users SET role=1 WHERE id={currentUser.id}";
         </p>
         <p>Mod<br />
-        docker exec -i db mysql -uroot -proot --database=login {'\u003C\u003C\u003C'} "UPDATE users SET role=5 WHERE id={currentUser.id}";</p>
+        docker exec -i db mysql -uroot -proot --database=db {'\u003C\u003C\u003C'} "UPDATE users SET role=5 WHERE id={currentUser.id}";</p>
         <p>Admin<br />
-        docker exec -i db mysql -uroot -proot --database=login {'\u003C\u003C\u003C'} "UPDATE users SET role=7 WHERE id={currentUser.id}";</p>
+        docker exec -i db mysql -uroot -proot --database=db {'\u003C\u003C\u003C'} "UPDATE users SET role=7 WHERE id={currentUser.id}";</p>
         <p>To ban a user: <br />
-        docker exec -i db mysql -uroot -proot --database=login {'\u003C\u003C\u003C'} "UPDATE users SET role=0 WHERE id={currentUser.id}";</p>
+        docker exec -i db mysql -uroot -proot --database=db {'\u003C\u003C\u003C'} "UPDATE users SET role=0 WHERE id={currentUser.id}";</p>
 
       </div>
       }

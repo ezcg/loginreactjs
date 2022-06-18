@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //import { BrowserRouter as Router, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import configs from "./configs"
 
 import AuthService from "./services/auth.service";
 import Home from "./components/Home";
@@ -13,6 +14,7 @@ import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import LoginHooks from './components/LoginHooks';
 import LogoutHooks from './components/LogoutHooks';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const App = () => {
 
@@ -26,7 +28,8 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
+    <GoogleOAuthProvider clientId={configs.GOOGLE_CLIENT_ID}>
+      <Router>
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark" style={{height:"70px"}}>
           <Link to={"/home"} className="navbar-brand">
@@ -73,6 +76,7 @@ const App = () => {
         </div>
       </div>
     </Router>
+    </GoogleOAuthProvider>
   );
 }
 

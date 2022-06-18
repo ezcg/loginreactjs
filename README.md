@@ -67,6 +67,11 @@ On the command line run where YOUR_WHO_AM_I is who you are running your shell as
 
 `sudo chown -R YOUR_WHO_AM_I:YOUR_WHO_AM_I .`
 
+**TODO**
+
+Not sure how to handle a failure in signOut() in  reactjs/src/components/LogoutHooks.js 
+
+Not sure how refreshTokenSetup() in reactjs/src/components/LoginHooks.js works. A method in refreshTokenSetup() is defined as refreshToken and its body contains a call to res.reloadAuthResponse() and I'm not sure what 'res' it is referring to. The 'res' when refreshTokenSetup(res) is called does not have method named reloadAuthResponse() associated with it.
 
 
 
