@@ -1,17 +1,12 @@
 import React, {useState} from 'react';
-//import { useGoogleLogin } from 'react-google-login';
 import { useGoogleLogin } from '@react-oauth/google';
-import { refreshTokenSetup } from '../utils/refreshToken';
-//import configs from "../configs";
+//import { refreshTokenSetup } from '../utils/refreshToken';
 import AuthService from "../services/auth.service";
 import Message from "./Message";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
-//const clientId = configs.GOOGLE_CLIENT_ID;
 
-function LoginHooks(props) {
+function LoginHooks() {
 
-  const history = useHistory();
   const [messageObj, setMessageObj] = useState({message:"", success:0, errorObj:{}});
 
   const onSuccess = async (res) => {
@@ -19,8 +14,7 @@ function LoginHooks(props) {
       'https://www.googleapis.com/oauth2/v3/userinfo',
       { headers: { Authorization: 'Bearer ' + res.access_token } },
     )
-    AuthService.login(userInfo.data).then(() => {
-        history.push("/home");
+    AuthService.login(userInfo.data).then((r) => {
         window.location.reload();
       },
       (error) => {
@@ -36,9 +30,9 @@ function LoginHooks(props) {
         errorObj.message = resMessage;
         setMessageObj({message:"", success:0, errorObj});
       }
-    );
-    refreshTokenSetup(res);
-  };
+    )
+    //refreshTokenSetup(res)
+  }
 
   const onFailure = (res) => {
     alert(

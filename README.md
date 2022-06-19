@@ -1,3 +1,7 @@
+Login in with Google Identity and React v18. 
+
+Users can have roles with permissions: admin, moderator, user, banned.
+
 **Set up google credentials for project.** 
 
 In the Credentials section of the Google Developer Console, create an OAuth Client ID credential of type Web Application. 
@@ -13,11 +17,11 @@ Set the values in auth.config.js to the values retrieved from Google credentials
 
 **Update configs in /reactjs/src/configs.js**
 
-Rename configs.example.js file to configs.js and update the properties in it.
+1. Rename configs.example.js file to configs.js and update the properties in it.
 
-The ports set in dev.apiUrl, dev.apiAuthUrl should match the ports set in docker-compose
+2. The ports set for dev.apiUrl and dev.apiAuthUrl should match the ports set in docker-compose
 
-Set the google credentials that were created above.
+3. Set the google credentials that were set for the project above.
 
 **Start it up**
 
@@ -66,13 +70,4 @@ blah
 On the command line run where YOUR_WHO_AM_I is who you are running your shell as:
 
 `sudo chown -R YOUR_WHO_AM_I:YOUR_WHO_AM_I .`
-
-**TODO**
-
-Not sure how to handle a failure in signOut() in  reactjs/src/components/LogoutHooks.js 
-
-Not sure how refreshTokenSetup() in reactjs/src/components/LoginHooks.js works. A method in refreshTokenSetup() is defined as refreshToken and its body contains a call to res.reloadAuthResponse() and I'm not sure what 'res' it is referring to. The 'res' when refreshTokenSetup(res) is called does not have method named reloadAuthResponse() associated with it.
-
-
-
 

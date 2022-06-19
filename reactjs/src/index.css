@@ -1,0 +1,63 @@
+body {
+  margin:0px;
+  font-family:Verdana,Arial;
+}
+
+a:visited {
+  text-decoration:none;
+}
+a {
+  color:#000080;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/************/
+
+.bodyCont {
+  margin:20px;
+}
+
+.headerCont {
+  width:100%;
+  background-color:#000000;
+  padding:8px;
+}
+.headerHomeLinkCont, .headerLinkCont {
+  margin-right:8px;
+  float:left;
+  padding:8px;
+}
+.headerLinkCont {
+  margin-top:8px;
+}
+.headerHomeLink, .headerLink {
+  color:#ffffff;
+  font-weight:bold;
+  text-decoration:none;
+}
+.headerHomeLink {
+  font-size:30px;
+}
+.headerLink {
+  font-size:20px;
+}
+
+.cb {
+  clear:both;
+}
+
+.logoutLinkCont {
+
+}
+
+.button {
+  cursor:pointer;
+}
+
+.videosMainPage, .picturesMainPage, .blogsMainPage, .homePage {
+  margin:10px auto;
+  width:900px;
+}
+
+/***************/

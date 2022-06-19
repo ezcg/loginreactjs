@@ -17,8 +17,10 @@ const getAdminBoard = () => {
   return axios.get(API_URL + "admin", {data:{},  headers: authHeader() });
 };
 
-export default {
+let obj = {
   getUserBoard,
   getModeratorBoard,
-  getAdminBoard,
-};
+  getAdminBoard
+}
+
+export default obj

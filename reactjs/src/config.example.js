@@ -5,6 +5,7 @@ dev.apiAuthUrl = "http://localhost:8080/api/auth/";
 dev.GOOGLE_CLIENT_ID="SET_IT";
 dev.GOOGLE_CLIENT_SECRET="SET_IT";
 
+// prod not currently used
 // overwrite dev with any prod values
 let prod = Object.assign({}, dev);
 prod.url = "https://ezcg.com/";

@@ -1,83 +1,51 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-//import { BrowserRouter as Router, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import configs from "./configs"
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./index.css";
 import AuthService from "./services/auth.service";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import ProtectedRoute from "./components/ProtectedRoute";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
-import LoginHooks from './components/LoginHooks';
-import LogoutHooks from './components/LogoutHooks';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import Header from "./components/Header";
 
 const App = () => {
 
   const [currentUser, setCurrentUser] = useState(undefined);
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-
     if (user) {
+      if (user.roles.includes("ROLE_MODERATOR")) {
+        user.isModerator = true
+      }
+      if (user.roles.includes("ROLE_ADMIN")) {
+        user.isAdmin = true
+      }
+      if (user.roles.includes("ROLE_BANNED")) {
+        user.isBanned = true
+      }
       setCurrentUser(user);
     }
-  }, []);
+  }, [])
+
+  let keyVal = currentUser ? 1 : 2
 
   return (
-    <GoogleOAuthProvider clientId={configs.GOOGLE_CLIENT_ID}>
+    <div key={keyVal}>
       <Router>
-      <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark" style={{height:"70px"}}>
-          <Link to={"/home"} className="navbar-brand">
-            Login with ReactJS and Google Oauth2
-          </Link>
-
-          {currentUser && (
-              <Link to={"/profile"} className="nav-link" style={{color:'#ffffff'}}>
-                Profile
-              </Link>
-          )}
-
-        {currentUser ? (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/profile"} className="nav-link" style={{color:'#ffffff'}}>
-                {currentUser.name}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <LogoutHooks />
-            </li>
-          </div>
-        ) : (
-          <div className="navbar-nav ml-auto">
-            <LoginHooks />
-          </div>
-        )}
-        </nav>
-
-        <div className="container mt-3">
-          <Switch>
-            {/*Public routes*/}
-            <Route exact path={["/", "/home"]} component={Home} />
-
-            <ProtectedRoute path="/profile" component={Profile} />
-
-            {/*Role related routes*/}
-            <Route path="/user" component={BoardUser} />
-            <Route path="/mod" component={BoardModerator} />
-            <Route path="/admin" component={BoardAdmin} />
-
-          </Switch>
+        <Header currentUser={currentUser} />
+        <div className="bodyCont">
+          <Routes>
+            <Route path="/" element={<Home currentUser={currentUser} />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/user" element={<BoardUser />} />
+            <Route path="/mod" element={<BoardModerator />} />
+            <Route path="/admin" element={<BoardAdmin />} />
+          </Routes>
         </div>
-      </div>
     </Router>
-    </GoogleOAuthProvider>
-  );
+    </div>
+  )
 }
 
 export default App;
