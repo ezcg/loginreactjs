@@ -8,6 +8,7 @@ import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import Header from "./components/Header";
+import Protected from "./components/Protected";
 
 const App = () => {
 
@@ -32,12 +33,21 @@ const App = () => {
 
   return (
     <div key={keyVal}>
+
       <Router>
         <Header currentUser={currentUser} />
         <div className="bodyCont">
           <Routes>
             <Route path="/" element={<Home currentUser={currentUser} />} />
-            <Route path="/profile" element={<Profile />} />
+            {/*<Route path="/profile" element={<Profile />} />*/}
+            <Route
+              path="/profile"
+              element={
+                <Protected isLoggedIn={currentUser}>
+                  <Profile />
+                </Protected>
+              }
+            />
             <Route path="/user" element={<BoardUser />} />
             <Route path="/mod" element={<BoardModerator />} />
             <Route path="/admin" element={<BoardAdmin />} />
